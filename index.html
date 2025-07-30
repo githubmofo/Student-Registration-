@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Student Registration Portal</title>
+</head>
+<body>
+    <header class="navigation">
+        <h2 class="logo">FormFluent</h2>
+        <nav class="navigation">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <a href="#upload-section" class="nav-upload">Upload</a>
+            <a href="#profile-section" class="nav-edit-profile">Edit Profile</a>
+        </nav>
+        <div class="user-menu-banner" style="display:none; margin-left:40px; position:relative;">
+            <div class="user-banner" style="display:flex; align-items:center; background:#471396; color:#fff; border:none; border-radius:6px; padding:10px 16px; font-size:1em; cursor:pointer; gap:10px;">
+                <div class="user-avatar" style="width:32px; height:32px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; color:#471396; font-weight:bold; font-size:14px;">U</div>
+                <span class="username" style="font-weight:500;">User</span>
+                <span class="dropdown-arrow" style="font-size:12px;">▼</span>
+            </div>
+            <div class="user-dropdown" style="position:absolute; top:100%; right:0; background:#fff; border:1px solid #ddd; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.15); min-width:180px; z-index:1000; display:none; margin-top:5px;">
+                <div class="dropdown-item" data-action="view-documents" style="padding:12px 16px; cursor:pointer; border-bottom:1px solid #eee; display:flex; align-items:center; gap:10px;">
+                    <span style="font-size:16px;">📄</span>
+                    <span>View Documents</span>
+                </div>
+                <div class="dropdown-item" data-action="sign-out" style="padding:12px 16px; cursor:pointer; display:flex; align-items:center; gap:10px;">
+                    <span style="font-size:16px;">🚪</span>
+                    <span>Sign Out</span>
+                </div>
+            </div>
+        </div>
+        <button class="btnLogin-popup">Login</button>
+    </header>
+
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" id="loginEmail" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" id="loginPassword" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="#">Forgot Password</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form id="registerForm">
+                <div class="input-box"> 
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" id="registerUsername" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" id="registerEmail" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" id="registerPassword" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">I agree to the terms & conditions</label>    
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <div class="login-register">
+                    <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <section id="upload-section" class="upload-form" style="display: none;">
+        <div class="form-box">
+            <span class="icon-close-upload" style="position:absolute;top:0;right:0;width:45px;height:45px;background:#162938;font-size:2em;color:#fff;display:flex;justify-content:center;align-items:center;border-bottom-left-radius:20px;cursor:pointer;z-index:1;">&times;</span>
+            <h2>Upload Document</h2>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="input-box file-input-container">
+                    <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx,.txt" required>
+                    <label for="fileInput" class="file-label">Choose File</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="document"></ion-icon></span>
+                    <input type="text" id="documentTitle" required>
+                    <label>Document Title</label>
+                </div>
+                <button type="submit" class="btn" id="uploadBtn">Upload</button>
+                <div class="login-register">
+                    <p><a href="#" id="back-to-login-upload">Back to Login</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="profile-section" class="edit-profile-form" style="display: none;">
+        <div class="form-box">
+            <span class="icon-close-edit" style="position:absolute;top:0;right:0;width:45px;height:45px;background:#162938;font-size:2em;color:#fff;display:flex;justify-content:center;align-items:center;border-bottom-left-radius:20px;cursor:pointer;z-index:1;">&times;</span>
+            <h2>Edit Profile</h2>
+            <form id="editProfileForm">
+                <div class="input-box">
+                     <span class="icon"><ion-icon name="person"></ion-icon></span>
+                     <input type="text" id="editUsername" value="">
+                    <label style="color:#162938;">Username</label>                 
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" id="editPassword" placeholder="Enter new password" style="color: #162938;">
+                    <label style="color:#162938;">New Password</label>
+                    
+                </div>
+                <button type="submit" class="btn" id="saveProfileBtn">Save Changes</button>
+                <div class="login-register">
+                    <p><a href="#" id="back-to-login-link">Back to Login</a></p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Success/Error Messages -->
+    <div id="message-container" style="display:none; position:fixed; top:20px; right:20px; padding:15px; border-radius:8px; color:white; font-weight:bold; z-index:10000;"></div>
+
+    <!-- Uploaded Documents Section -->
+    <section id="documents-section" class="documents-section" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 9998; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 32px; border-radius: 12px; max-width: 800px; max-height: 80vh; overflow-y: auto; position: relative;">
+            <span class="icon-close-docs" style="position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #162938;">&times;</span>
+            <h2 style="color: #162938; margin-bottom: 20px;">My Uploaded Documents</h2>
+            <div id="documents-list" style="display: grid; gap: 15px;">
+                <!-- Documents will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <!-- Firebase Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
